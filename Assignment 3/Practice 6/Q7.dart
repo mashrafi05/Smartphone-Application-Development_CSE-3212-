@@ -1,9 +1,15 @@
+import 'dart:io';
+
 class Question {
   String questionText;
   List<String> options;
-  int correctAnswer;
+  int correctAnswerIndex;
 
-  Question(this.questionText, this.options, this.correctAnswer);
+  Question(this.questionText, this.options, this.correctAnswerIndex);
+
+  bool checkAnswer(int userAnswer) {
+    return userAnswer == correctAnswerIndex;
+  }
 }
 
 class Quiz {
@@ -12,32 +18,53 @@ class Quiz {
 
   Quiz(this.questions);
 
-  void start() {
-    for (int i = 0; i < questions.length; i++) {
+  void startQuiz() {
+    print("Welcome to the Quiz!\n");
+
+    for (var i = 0; i < questions.length; i++) {
       var q = questions[i];
-      print("\nQ${i + 1}: ${q.questionText}");
-      for (int j = 0; j < q.options.length; j++) {
+      print("Question ${i + 1}: ${q.questionText}");
+
+      for (var j = 0; j < q.options.length; j++) {
         print("${j + 1}. ${q.options[j]}");
       }
 
-      // Simulate user input (you can replace this with stdin)
-      int answer = q.correctAnswer; // assume correct for now
-      if (answer == q.correctAnswer) {
-        score++;
+      stdout.write("Enter your answer (1-${q.options.length}): ");
+      int? userChoice = int.tryParse(stdin.readLineSync() ?? '');
+
+      if (userChoice != null &&
+          userChoice > 0 &&
+          userChoice <= q.options.length) {
+        if (q.checkAnswer(userChoice - 1)) {
+          print("Correct!\n");
+          score++;
+        } else {
+          print("Wrong! Correct answer: ${q.options[q.correctAnswerIndex]}\n");
+        }
+      } else {
+        print("Invalid input! Skipping question.\n");
       }
     }
 
-    print("\nYour final score: $score / ${questions.length}");
+    print("Quiz Over! Your final score is: $score/${questions.length}");
   }
 }
 
 void main() {
-  List<Question> questions = [
-    Question("What is the capital of France?", ["Paris", "London", "Berlin"], 1),
-    Question("2 + 2 = ?", ["3", "4", "5"], 2),
-    Question("What is the color of the sky?", ["Blue", "Green", "Red"], 1),
-  ];
+  var q1 = Question("What is the capital of Bangladesh?", [
+    "Dhaka",
+    "Chittagong",
+    "Sylhet",
+    "Khulna",
+  ], 0);
+  var q2 = Question("Which language is used for Flutter?", [
+    "Python",
+    "Dart",
+    "Java",
+    "C++",
+  ], 1);
+  var q3 = Question("2 + 2 equals?", ["3", "4", "5", "6"], 1);
 
-  Quiz quiz = Quiz(questions);
-  quiz.start();
+  var quiz = Quiz([q1, q2, q3]);
+  quiz.startQuiz();
 }

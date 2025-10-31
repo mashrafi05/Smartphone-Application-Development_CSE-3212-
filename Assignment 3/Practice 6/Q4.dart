@@ -17,6 +17,6 @@ class Cat extends Animal {
 }
 
 void main() {
-  Cat cat = Cat(1, "Kitty", "White", "Meow");
+  Cat cat = Cat(1, "Kitty", "Red", "Meow");
   cat.display();
 }

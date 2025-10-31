@@ -14,6 +14,6 @@ class CokeBottle implements Bottle {
 }
 
 void main() {
-  Bottle bottle = Bottle(); // factory constructor used
+  Bottle bottle = Bottle();
   bottle.open();
 }

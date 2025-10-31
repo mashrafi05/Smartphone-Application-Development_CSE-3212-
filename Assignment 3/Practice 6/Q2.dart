@@ -12,9 +12,9 @@ class House {
 
 void main() {
   List<House> houses = [
-    House(1, "Lake View Villa", 250000),
-    House(2, "Green Cottage", 175000),
-    House(3, "Sunset Apartment", 200000),
+    House(1, "Mohuruho Cottage", 250000),
+    House(2, "Sea view Cottage", 175000),
+    House(3, "Forrest view Cottage", 200000),
   ];
 
   for (var house in houses) {

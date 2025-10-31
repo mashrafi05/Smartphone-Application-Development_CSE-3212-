@@ -11,9 +11,9 @@ class Laptop {
 }
 
 void main() {
-  Laptop l1 = Laptop(1, "HP", "8GB");
-  Laptop l2 = Laptop(2, "Dell", "16GB");
-  Laptop l3 = Laptop(3, "Lenovo", "12GB");
+  Laptop l1 = Laptop(1, "Macbook", "M1");
+  Laptop l2 = Laptop(2, "HP envy", "8GB");
+  Laptop l3 = Laptop(3, "ASUS", "6GB");
 
   l1.display();
   l2.display();

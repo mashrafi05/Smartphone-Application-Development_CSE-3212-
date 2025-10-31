@@ -1,7 +1,8 @@
 enum Gender { male, female, others }
 
 void main() {
-  for (var g in Gender.values) {
-    print(g);
+  print("All gender values:");
+  for (var gender in Gender.values) {
+    print(gender);
   }
 }

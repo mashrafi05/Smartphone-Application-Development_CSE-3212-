@@ -1,8 +1,8 @@
 int checkNull(int? value) {
-  return value ?? 0; 
+  return value ?? 0;
 }
 
 void main() {
-  print(checkNull(10));  
-  print(checkNull(null)); 
+  print(checkNull(120));
+  print(checkNull(null));
 }
